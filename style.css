@@ -4,6 +4,7 @@ body {
 
 h1 {
   color: blueviolet;
+  transition: color 0.5s ease-in-out;
 }
 .enter {
   color: coral;
