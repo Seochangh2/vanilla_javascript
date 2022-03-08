@@ -7,14 +7,15 @@ function titleClick() {
 }
 function mouseEnter() {
   ch2.innerText = "Hi";
-  const currentColor = ch2.style.color;
-  let newColor;
-  if (currentColor === "black") {
-    newColor = "blue";
+  const cName = ch2.className;
+  let newCName;
+  const enterClass = "enter";
+  if (cName === "") {
+    newCName = enterClass;
   } else {
-    newColor = "black";
+    newCName = "";
   }
-  ch2.style.color = newColor;
+  ch2.className = newCName;
 }
 function mouseLeave() {
   ch2.innerText = "Bye";
