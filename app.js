@@ -1,5 +1,3 @@
-const title = document.getElementById("title");
+const ch = document.getElementsByClassName("ch_className");
 
-console.dir(title);
-console.log(title.id);
-console.log(title.className);
+console.log(ch);
