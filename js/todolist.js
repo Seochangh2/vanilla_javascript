@@ -7,10 +7,11 @@ let toDos = [];
 function saveToDo() {
   localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
 }
-function apendToDo(newTodo) {
+function apendToDo(newTodoobj) {
   const li = document.createElement("li");
+  li.id = newTodoobj.id;
   const span = document.createElement("span");
-  span.innerText = newTodo;
+  span.innerText = newTodoobj.text;
 
   const button = document.createElement("button");
   button.innerText = "❌";
@@ -23,14 +24,22 @@ function apendToDo(newTodo) {
 }
 function toDoSubmit(event) {
   event.preventDefault();
-  toDos.push(toDoInput.value);
+  const toDoobj = {
+    text: toDoInput.value,
+    id: Date.now(),
+  };
+  toDos.push(toDoobj);
   saveToDo();
-  apendToDo(toDoInput.value);
+  apendToDo(toDoobj);
   toDoInput.value = "";
 }
+
 function removeToDO(event) {
   li = event.target.parentElement;
+  const id = li.id;
+  toDos = toDos.filter((toDo) => String(toDo.id) !== li.id);
   toDoList.removeChild(event.target.parentElement);
+  saveToDo();
 }
 toDoForm.addEventListener("submit", toDoSubmit);
 
