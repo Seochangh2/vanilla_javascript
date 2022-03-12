@@ -2,6 +2,10 @@ const toDoForm = document.querySelector("#todo-form");
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.querySelector("#todo-list");
 
+const toDos = [];
+function saveToDo() {
+  localStorage.setItem("todos", JSON.stringify(toDos));
+}
 function apendToDo(newTodo) {
   const li = document.createElement("li");
   const span = document.createElement("span");
@@ -18,6 +22,8 @@ function apendToDo(newTodo) {
 }
 function toDoSubmit(event) {
   event.preventDefault();
+  toDos.push(toDoInput.value);
+  saveToDo();
   apendToDo(toDoInput.value);
   toDoInput.value = "";
 }
